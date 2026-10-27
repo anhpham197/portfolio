@@ -1,0 +1,104 @@
+[
+  {
+    "name": "cypress",
+    "file": "cypress.svg",
+    "source": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg",
+    "bytes": 2545
+  },
+  {
+    "name": "playwright",
+    "file": "playwright.svg",
+    "source": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg",
+    "bytes": 3760
+  },
+  {
+    "name": "typescript",
+    "file": "typescript.svg",
+    "source": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+    "bytes": 943
+  },
+  {
+    "name": "java",
+    "file": "java.svg",
+    "source": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+    "bytes": 1540
+  },
+  {
+    "name": "mysql",
+    "file": "mysql.svg",
+    "source": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+    "bytes": 2765
+  },
+  {
+    "name": "sqlite",
+    "file": "sqlite.svg",
+    "source": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg",
+    "bytes": 2422
+  },
+  {
+    "name": "jenkins",
+    "file": "jenkins.svg",
+    "source": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg",
+    "bytes": 15407
+  },
+  {
+    "name": "git",
+    "file": "git.svg",
+    "source": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+    "bytes": 778
+  },
+  {
+    "name": "jira",
+    "file": "jira.svg",
+    "source": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg",
+    "bytes": 1092
+  },
+  {
+    "name": "confluence",
+    "file": "confluence.svg",
+    "source": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/confluence/confluence-original.svg",
+    "bytes": 1483
+  },
+  {
+    "name": "bruno",
+    "file": "bruno.svg",
+    "source": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bruno.svg",
+    "bytes": 2907
+  },
+  {
+    "name": "webdriverio",
+    "file": "webdriverio.svg",
+    "source": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/webdriverio.svg",
+    "bytes": 513
+  },
+  {
+    "name": "karate",
+    "file": "karate.svg",
+    "source": "https://karatelabs.github.io/resources/logo.svg",
+    "bytes": 8361
+  },
+  {
+    "name": "harness",
+    "file": "harness.png",
+    "source": "https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/62245acc1b2f1040941f0d8f_webclip.png",
+    "bytes": 6485
+  },
+  {
+    "name": "lark",
+    "file": "lark.png",
+    "source": "https://p16-hera-overseas.larksuitecdn.com/tos-mya-i-lojyj5t9n9/9b87226605154fb7b8141a9c94de22e9.png~tplv-lojyj5t9n9-origin.image",
+    "bytes": 13052
+  },
+  {
+    "name": "rally",
+    "file": "rally.ico",
+    "source": "https://rally1.rallydev.com/assets/burro/churro/current/dist/webroot/favicon.ico",
+    "bytes": 7886
+  },
+  {
+    "name": "qtest",
+    "file": "qtest.ico",
+    "source": "https://www.tricentis.com/favicon.ico?v=2",
+    "bytes": 6971
+  }
+]

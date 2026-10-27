@@ -1,0 +1,56 @@
+[
+  {
+    "name": "iiba",
+    "file": "iiba.svg",
+    "source": "https://www.iiba.org/globalassets/logos/iiba-logos/iibalogobluetextorangeball-01.svg",
+    "bytes": 16211
+  },
+  {
+    "name": "astqb",
+    "file": "astqb.svg",
+    "source": "https://astqb.org/assets/images/ASTQB-Logo_New.svg",
+    "bytes": 14795
+  },
+  {
+    "name": "microsoft",
+    "file": "microsoft.png",
+    "source": "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png",
+    "bytes": 4054
+  },
+  {
+    "name": "aws",
+    "file": "aws.png",
+    "source": "https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png",
+    "bytes": 3061
+  },
+  {
+    "name": "cole",
+    "file": "cole.svg",
+    "source": "https://cole.vn/client_fe/assets/img/logo-cole-final.svg",
+    "bytes": 56607
+  },
+  {
+    "name": "veo",
+    "file": "veo.webp",
+    "source": "https://veo.com.vn/veo-logo.webp",
+    "bytes": 22708
+  },
+  {
+    "name": "ap-project",
+    "file": "ap-project.jpg",
+    "source": "https://media.licdn.com/dms/image/v2/C510BAQGKNMJvFX0B1g/company-logo_200_200/company-logo_200_200/0/1630605427935/ap_project_logo?e=2147483647&v=beta&t=K_FjfIIW9A7nqsq-KElR72oWiRFoaJsDpb0NpMt7QI8",
+    "bytes": 3773
+  },
+  {
+    "name": "mta",
+    "file": "mta.png",
+    "source": "https://mta.edu.vn/Logo_MTA.png",
+    "bytes": 159055
+  },
+  {
+    "name": "nci",
+    "file": "nci.png",
+    "source": "https://www.ncirl.ie/Portals/0/Marketing/Logos/NCI%20Rebrand/Icon%20Logos/NCI_Logo_Icon_RGB_NCI_Logo_Icon_Colour.png",
+    "bytes": 127545
+  }
+]
