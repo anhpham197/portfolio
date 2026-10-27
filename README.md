@@ -1,10 +1,10 @@
 # Anh Pham — personal portfolio
 
-A responsive portfolio built with React, Ant Design, and Vite. Career content combines the supplied LinkedIn PDF, temporary CV, and publicly indexed LinkedIn details. A centered, typography-led hero introduces the owner and provides contact and experience links. The downloadable DOCX preserves the supplied CV template, with its experience and high school education updated to match the LinkedIn export. The user's original source files remain unchanged.
+A responsive portfolio built with React, Ant Design, and Vite. Career content combines the supplied LinkedIn PDF, temporary CV, and publicly indexed LinkedIn details. A centered, typography-led hero introduces the owner and provides contact and experience links. The downloadable PDF is temporarily a clearly labeled fictional sample, pending the owner's final CV. Original input documents have not been modified.
 
 ## Content sources
 
-- Supplied LinkedIn export (`Profile.pdf`): source for employment, ANSV and MindX responsibilities, and SUSOFT apprenticeship status. At the owner's request, NAB is displayed as one Quality Engineer entry from July 2023 to present, combining the internship and subsequent employment. The downloadable CV uses the same combined entry. Four roles are displayed; private tutoring is excluded. The source PDF is not published. SUSOFT ends in February 2022.
+- Supplied LinkedIn export (`Profile.pdf`): source for employment, ANSV and MindX responsibilities, and SUSOFT apprenticeship status. At the owner's request, NAB is displayed as one Quality Engineer entry from July 2023 to present, combining the internship and subsequent employment. Four roles are displayed; private tutoring is excluded. The source PDF is not published. SUSOFT ends in February 2022.
 - Supplied CV: source for detailed NAB engineering responsibilities.
 - Hero description: condensed from the Summary in the supplied LinkedIn export, including manual/automation testing, Cypress/WebdriverIO/Playwright, API testing, CI/CD, and the commitment to education access.
 - Theme: primary burgundy `#A41034`, read directly from the name heading in the supplied CV's DOCX formatting. Interface backgrounds, borders, and supporting accents use matching warm tints; status colors and official company logos retain their meaning and artwork.
@@ -65,7 +65,7 @@ Open http://127.0.0.1:4173/portfolio/ for that preview. Running `npm run build` 
 - University news links and summaries: `src/research-news.js`.
 - Toolkit icon paths and official links: `src/tool-icons.js`.
 - Theme, animations, and responsive styles: `src/styles.css`.
-- Downloadable CV with experience aligned to the supplied LinkedIn export: `public/Ngoc-Anh-Pham-CV.docx`.
+- Downloadable CV: `public/Ngoc-Anh-Pham-CV.pdf`. This is currently a one-page fictional sample. Replace this exact file with the final PDF and push to `main`; all download links will continue to work without code changes. The former DOCX is removed from the current source and deployment; earlier Git commits still contain it.
 - Page title, description, and social metadata: `index.html`.
 
 Animations respect reduced-motion preferences. Navigation, mobile drawer, skill selection, experience accordions, CV download, and contact links are keyboard accessible. Email copy uses the browser clipboard, with a visible address fallback.
