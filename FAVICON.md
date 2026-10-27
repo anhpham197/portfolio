@@ -17,3 +17,5 @@ Project assets:
 - `public/icon-192.png`, `public/icon-512.png`: additional square PNG sizes.
 
 PNG size variants preserve alpha. The ICO packages the small PNGs without changing their pixels.
+
+The HTML uses `panther-favicon.ico`, `panther-favicon-32.png`, and `panther-apple-touch-icon.png`. These fresh paths avoid reusing previously cached browser icons. The ICO uses the standard `rel="icon"` declaration with its supported sizes; the PNG is an explicit 32px alternative. All paths use Vite's deployment base so they work under `/portfolio/`. The image bytes preserve the existing team artwork. The unused starter monogram SVG was removed.
