@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import { ArrowRightOutlined, CloseOutlined } from '@ant-design/icons';
 import { assetPath } from './assets';
 
-export const welcomeStorageKey = 'anh-portfolio.welcome.v1';
+export const welcomeStorageKey = 'anh-portfolio.welcome.v2';
 export const welcomeQuote = "Hi, I'm Anh. Welcome to my little corner!";
 export const welcomeTiming = { reading: 4800, exit: 380, maximum: 10000 };
 
@@ -88,7 +88,17 @@ export default function WelcomeIntro() {
   return <dialog ref={dialogRef} className={classes} aria-labelledby="welcome-title" aria-describedby="welcome-description" aria-busy={!ready} onCancel={event => { event.preventDefault(); dismiss(); }} onKeyDown={() => setAutoAdvance(false)}>
     <Button ref={skipRef} type="text" className="welcome-skip" onClick={dismiss} aria-label="Skip welcome intro">Skip intro <CloseOutlined aria-hidden="true"/></Button>
     <div className="welcome-stage">
-      {!imageFailed && <div className="welcome-art" aria-hidden="true"><div className="welcome-art-inner"><img ref={imageRef} src={assetPath('welcome/pink-panther.png')} alt="" width="1150" height="1368" loading="eager" fetchPriority="high" onLoad={() => setReady(true)} onError={() => { setImageFailed(true); setReady(true); }}/></div></div>}
+      {!imageFailed && <div className="welcome-art" aria-hidden="true">
+        <div className="welcome-art-inner">
+          {/* Clipped copies share one cached image and let the hands wave independently. */}
+          <div className="welcome-panther">
+            <img className="welcome-panther-body" ref={imageRef} src={assetPath('welcome/pink-panther-hola.png')} alt="" width="1618" height="972" loading="eager" fetchPriority="high" onLoad={() => setReady(true)} onError={() => { setImageFailed(true); setReady(true); }}/>
+            <img className="welcome-panther-hand hand-left" src={assetPath('welcome/pink-panther-hola.png')} alt="" width="1618" height="972"/>
+            <img className="welcome-panther-hand hand-right" src={assetPath('welcome/pink-panther-hola.png')} alt="" width="1618" height="972"/>
+          </div>
+        </div>
+        <div className="welcome-sparkles">{['one', 'two', 'three'].map(position => <svg key={position} className={`welcome-sparkle sparkle-${position}`} viewBox="0 0 24 24"><path d="M12 1 15 9 23 12 15 15 12 23 9 15 1 12 9 9Z"/></svg>)}</div>
+      </div>}
       <div className="welcome-speech">
         <h2 id="welcome-title">Hi, I'm Anh.</h2>
         <p id="welcome-description">Welcome to my little corner!</p>
