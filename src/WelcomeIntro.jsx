@@ -4,7 +4,7 @@ import { ArrowRightOutlined } from '@ant-design/icons';
 import { assetPath } from './assets';
 import TornPaperHole from './TornPaperHole';
 
-export const welcomeStorageKey = 'anh-portfolio.welcome.v4';
+export const welcomeStorageKey = 'anh-portfolio.welcome.v5';
 export const welcomeQuote = "Hi, I'm Anh. Welcome to my little corner!";
 export const welcomeTiming = { exit: 380 };
 
@@ -77,15 +77,15 @@ export default function WelcomeIntro() {
     <div className="welcome-stage">
       {!imageFailed && <div className="welcome-art" aria-hidden="true">
         <div className="welcome-art-inner">
-          {!letteringFailed && <div className="welcome-hola"><img ref={letteringRef} src={assetPath('welcome/hola-gradient.png')} alt="" width="2083" height="755" loading="eager" fetchPriority="high" onLoad={() => setLetteringReady(true)} onError={() => { setLetteringFailed(true); setLetteringReady(true); }}/></div>}
+          {!letteringFailed && <div className="welcome-hola"><img ref={letteringRef} src={assetPath('welcome/hola-soft-pink.png')} alt="" width="2084" height="755" loading="eager" fetchPriority="high" onLoad={() => setLetteringReady(true)} onError={() => { setLetteringFailed(true); setLetteringReady(true); }}/></div>}
           <div className="welcome-portal">
             <TornPaperHole/>
             <div className="welcome-portal-viewport"><div className="welcome-emergence-window">
               {/* Clipped copies share one cached image and let the hands wave independently. */}
               <div className="welcome-panther">
-                <img className="welcome-panther-body" ref={imageRef} src={assetPath('welcome/pink-panther-gradient.png')} alt="" width="1618" height="972" loading="eager" fetchPriority="high" onLoad={() => setPantherReady(true)} onError={() => { setImageFailed(true); setPantherReady(true); setLetteringReady(true); }}/>
-                <img className="welcome-panther-hand hand-left" src={assetPath('welcome/pink-panther-gradient.png')} alt="" width="1618" height="972"/>
-                <img className="welcome-panther-hand hand-right" src={assetPath('welcome/pink-panther-gradient.png')} alt="" width="1618" height="972"/>
+                <img className="welcome-panther-body" ref={imageRef} src={assetPath('welcome/pink-panther-soft-pink.png')} alt="" width="1618" height="972" loading="eager" fetchPriority="high" onLoad={() => setPantherReady(true)} onError={() => { setImageFailed(true); setPantherReady(true); setLetteringReady(true); }}/>
+                <img className="welcome-panther-hand hand-left" src={assetPath('welcome/pink-panther-soft-pink.png')} alt="" width="1618" height="972"/>
+                <img className="welcome-panther-hand hand-right" src={assetPath('welcome/pink-panther-soft-pink.png')} alt="" width="1618" height="972"/>
               </div>
             </div></div>
             <TornPaperHole front/>
