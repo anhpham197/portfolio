@@ -10,6 +10,7 @@ import { assetPath } from './assets';
 import { credentials, communityRoles } from './credentials';
 import { toolIcons } from './tool-icons';
 import NumberlinkAnimation from './NumberlinkAnimation';
+import WelcomeIntro from './WelcomeIntro';
 
 const EMAIL = 'ngocanhpham197@gmail.com';
 const ArrowUpRightOutlined = () => <ArrowRightOutlined rotate={-45} />;
@@ -53,10 +54,11 @@ function Portfolio() {
   };
   const data = toolkits[toolkit];
   return <>
+    <WelcomeIntro/>
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="site-header"><div className="nav-wrap"><a href="#" className="brand" aria-label="Anh Pham home"><span className="brand-mark">a<span>p</span><i/></span><span>anh pham<span className="brand-dot">.</span></span></a><nav className="desktop-nav" aria-label="Main navigation">{NAV.map(([id,label])=><a key={id} className={active===id?'active':''} href={'#'+id}>{label}</a>)}</nav><div className="nav-actions"><Button className="mobile-menu" type="text" icon={<MenuOutlined />} aria-label="Open navigation" onClick={()=>setMenuOpen(true)}/></div></div></header>
     <Drawer title="Explore" open={menuOpen} onClose={()=>setMenuOpen(false)} closeIcon={<CloseOutlined />} size={300}><nav className="drawer-nav" aria-label="Mobile navigation">{NAV.map(([id,label])=><a key={id} href={'#'+id} onClick={()=>setMenuOpen(false)}>{label}<ArrowUpRightOutlined /></a>)}</nav></Drawer>
-    <main id="main">
+    <main id="main" tabIndex={-1}>
       <section className="hero container" aria-labelledby="hero-title"><div className="hero-copy"><p className="intro">HELLO, I’M NGOC ANH PHAM</p><h1 id="hero-title">Quality is in <span className="hero-title-ending">the <span className="title-accent">details<svg viewBox="0 0 280 18" aria-hidden="true"><path d="M3 12Q133-2 275 9"/></svg></span><span className="title-dot">.</span></span></h1><div className="hero-description"><p>I’m a Quality Engineer experienced in <strong>manual and automation testing</strong> with Cypress, WebdriverIO, and Playwright. I work across API testing and CI/CD to build reliable test processes, improve efficiency, and support product quality.</p><p>Beyond engineering, I’m committed to improving access to education for disadvantaged children.</p></div><div className="hero-ctas"><Button type="primary" size="large" href="#contact">Let’s connect <ArrowUpRightOutlined /></Button><Button size="large" href="#experience" type="text">Explore my experience <ArrowRightOutlined /></Button></div><div className="hero-meta"><span><EnvironmentOutlined/> Hanoi, Vietnam</span><span className="meta-divider"/><span>Quality Engineer at <strong>NAB</strong></span></div></div></section>
       <div className="trust-strip"><div className="container trust-content"><span className="trust-title">A FOUNDATION IN<br/><strong>QUALITY & CONTINUOUS LEARNING</strong></span>{[
         {logo:'/logos/astqb.svg',name:'ASTQB / ISTQB',title:'Certified Tester',detail:'CTFL 4.0'},
