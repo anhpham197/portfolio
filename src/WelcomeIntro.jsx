@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import { ArrowRightOutlined, CloseOutlined } from '@ant-design/icons';
 import { assetPath } from './assets';
 
-export const welcomeStorageKey = 'anh-portfolio.welcome.v2';
+export const welcomeStorageKey = 'anh-portfolio.welcome.v3';
 export const welcomeQuote = "Hi, I'm Anh. Welcome to my little corner!";
 export const welcomeTiming = { reading: 4800, exit: 380, maximum: 10000 };
 
@@ -15,7 +15,10 @@ export function shouldShowWelcome() {
 
 export default function WelcomeIntro() {
   const [visible, setVisible] = useState(shouldShowWelcome);
-  const [ready, setReady] = useState(false);
+  const [pantherReady, setPantherReady] = useState(false);
+  const [letteringReady, setLetteringReady] = useState(false);
+  const [letteringFailed, setLetteringFailed] = useState(false);
+  const ready = pantherReady && letteringReady;
   const [imageFailed, setImageFailed] = useState(false);
   const [closing, setClosing] = useState(false);
   const [autoAdvance, setAutoAdvance] = useState(true);
@@ -23,6 +26,7 @@ export default function WelcomeIntro() {
   const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   const dialogRef = useRef(null);
   const imageRef = useRef(null);
+  const letteringRef = useRef(null);
   const enterRef = useRef(null);
   const skipRef = useRef(null);
   const dismiss = useCallback(() => setClosing(true), []);
@@ -40,7 +44,8 @@ export default function WelcomeIntro() {
     dialog.showModal();
     skipRef.current?.focus({ preventScroll: true });
     try { sessionStorage.setItem(welcomeStorageKey, 'seen'); } catch { /* Storage may be disabled. */ }
-    if (imageRef.current?.complete && imageRef.current.naturalWidth > 0) setReady(true);
+    if (imageRef.current?.complete && imageRef.current.naturalWidth > 0) setPantherReady(true);
+    if (letteringRef.current?.complete && letteringRef.current.naturalWidth > 0) setLetteringReady(true);
     return () => {
       if (dialog.open) dialog.close();
       document.documentElement.style.overflow = previousOverflow;
@@ -90,9 +95,10 @@ export default function WelcomeIntro() {
     <div className="welcome-stage">
       {!imageFailed && <div className="welcome-art" aria-hidden="true">
         <div className="welcome-art-inner">
+          {!letteringFailed && <div className="welcome-hola"><img ref={letteringRef} src={assetPath('welcome/hola-lettering.png')} alt="" width="2081" height="755" loading="eager" fetchPriority="high" onLoad={() => setLetteringReady(true)} onError={() => { setLetteringFailed(true); setLetteringReady(true); }}/></div>}
           {/* Clipped copies share one cached image and let the hands wave independently. */}
           <div className="welcome-panther">
-            <img className="welcome-panther-body" ref={imageRef} src={assetPath('welcome/pink-panther-hola.png')} alt="" width="1618" height="972" loading="eager" fetchPriority="high" onLoad={() => setReady(true)} onError={() => { setImageFailed(true); setReady(true); }}/>
+            <img className="welcome-panther-body" ref={imageRef} src={assetPath('welcome/pink-panther-hola.png')} alt="" width="1618" height="972" loading="eager" fetchPriority="high" onLoad={() => setPantherReady(true)} onError={() => { setImageFailed(true); setPantherReady(true); setLetteringReady(true); }}/>
             <img className="welcome-panther-hand hand-left" src={assetPath('welcome/pink-panther-hola.png')} alt="" width="1618" height="972"/>
             <img className="welcome-panther-hand hand-right" src={assetPath('welcome/pink-panther-hola.png')} alt="" width="1618" height="972"/>
           </div>
