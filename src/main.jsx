@@ -11,10 +11,12 @@ import { credentials, communityRoles } from './credentials';
 import { toolIcons } from './tool-icons';
 import NumberlinkAnimation from './NumberlinkAnimation';
 import WelcomeIntro from './WelcomeIntro';
+import useActiveSection from './useActiveSection';
 
 const EMAIL = 'ngocanhpham197@gmail.com';
 const ArrowUpRightOutlined = () => <ArrowRightOutlined rotate={-45} />;
 const NAV = [['experience','Experience'],['expertise','Expertise'],['education','Education'],['about','About'],['contact','Contact']];
+const NAV_IDS = NAV.map(([id]) => id);
 const toolkits = {
   'Test automation': { icon: <CodeOutlined />, title: 'Reliable tests. Confident changes.', description: 'Frontend automation across evolving applications, with an emphasis on maintaining useful coverage and reducing flaky tests.', tools: ['WebdriverIO', 'Cypress', 'Playwright', 'TypeScript', 'Java'], details: ['Automation framework migration', 'End-to-end & regression testing', 'Test suite maintenance & stability'] },
   'API & data': { icon: <ApiOutlined />, title: 'Quality beneath the interface.', description: 'Manual and automated API testing to validate backend behavior and support dependable regression testing.', tools: ['Karate', 'Bruno', 'MySQL', 'SQLite'], details: ['Manual API investigation', 'Automated API regression', 'Database validation'] },
@@ -35,18 +37,17 @@ function SectionHeading({number, label, title, description}) {
 
 function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [active, setActive] = useState('');
+  const active = useActiveSection(NAV_IDS);
   const [toolkit, setToolkit] = useState('Test automation');
   const [showTop, setShowTop] = useState(false);
   const { message } = AntApp.useApp();
   useEffect(() => {
     const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible'); observer.unobserve(e.target);} }), {threshold:0.08});
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    const sections = new IntersectionObserver(entries => entries.forEach(e => {if(e.isIntersecting)setActive(e.target.id);}), {rootMargin:'-20% 0px -55% 0px'});
-    document.querySelectorAll('main section[id]').forEach(el => sections.observe(el));
-    const onScroll = () => {setShowTop(window.scrollY > 650);if(window.scrollY < 300)setActive('');};
+    const onScroll = () => setShowTop(window.scrollY > 650);
+    onScroll();
     window.addEventListener('scroll',onScroll,{passive:true});
-    return () => {observer.disconnect();sections.disconnect();window.removeEventListener('scroll',onScroll);};
+    return () => {observer.disconnect();window.removeEventListener('scroll',onScroll);};
   }, []);
   const copyEmail = async () => {
     try {await navigator.clipboard.writeText(EMAIL);message.success('Email address copied');}
@@ -56,8 +57,8 @@ function Portfolio() {
   return <>
     <WelcomeIntro/>
     <a className="skip-link" href="#main">Skip to content</a>
-    <header className="site-header"><div className="nav-wrap"><a href="#" className="brand" aria-label="Anh Pham home"><span className="brand-mark">a<span>p</span><i/></span><span>anh pham<span className="brand-dot">.</span></span></a><nav className="desktop-nav" aria-label="Main navigation">{NAV.map(([id,label])=><a key={id} className={active===id?'active':''} href={'#'+id}>{label}</a>)}</nav><div className="nav-actions"><Button className="mobile-menu" type="text" icon={<MenuOutlined />} aria-label="Open navigation" onClick={()=>setMenuOpen(true)}/></div></div></header>
-    <Drawer title="Explore" open={menuOpen} onClose={()=>setMenuOpen(false)} closeIcon={<CloseOutlined />} size={300}><nav className="drawer-nav" aria-label="Mobile navigation">{NAV.map(([id,label])=><a key={id} href={'#'+id} onClick={()=>setMenuOpen(false)}>{label}<ArrowUpRightOutlined /></a>)}</nav></Drawer>
+    <header className="site-header"><div className="nav-wrap"><a href="#" className="brand" aria-label="Anh Pham home"><span className="brand-mark">a<span>p</span><i/></span><span>anh pham<span className="brand-dot">.</span></span></a><nav className="desktop-nav" aria-label="Main navigation">{NAV.map(([id,label])=><a key={id} className={active===id?'active':''} aria-current={active===id?'location':undefined} href={'#'+id}>{label}</a>)}</nav><div className="nav-actions"><Button className="mobile-menu" type="text" icon={<MenuOutlined />} aria-label="Open navigation" onClick={()=>setMenuOpen(true)}/></div></div></header>
+    <Drawer title="Explore" open={menuOpen} onClose={()=>setMenuOpen(false)} closeIcon={<CloseOutlined />} size={300}><nav className="drawer-nav" aria-label="Mobile navigation">{NAV.map(([id,label])=><a key={id} className={active===id?'active':''} aria-current={active===id?'location':undefined} href={'#'+id} onClick={()=>setMenuOpen(false)}>{label}<ArrowUpRightOutlined /></a>)}</nav></Drawer>
     <main id="main" tabIndex={-1}>
       <section className="hero container" aria-labelledby="hero-title"><div className="hero-copy"><p className="intro">HELLO, I’M NGOC ANH PHAM</p><h1 id="hero-title">Quality is in <span className="hero-title-ending">the <span className="title-accent">details<svg viewBox="0 0 280 18" aria-hidden="true"><path d="M3 12Q133-2 275 9"/></svg></span><span className="title-dot">.</span></span></h1><div className="hero-description"><p>I’m a Quality Engineer experienced in <strong>manual and automation testing</strong> with Cypress, WebdriverIO, and Playwright. I work across API testing and CI/CD to build reliable test processes, improve efficiency, and support product quality.</p><p>Beyond engineering, I’m committed to improving access to education for disadvantaged children.</p></div><div className="hero-ctas"><Button type="primary" size="large" href="#contact">Let’s connect <ArrowUpRightOutlined /></Button><Button size="large" href="#experience" type="text">Explore my experience <ArrowRightOutlined /></Button></div><div className="hero-meta"><span><EnvironmentOutlined/> Hanoi, Vietnam</span><span className="meta-divider"/><span>Quality Engineer at <strong>NAB</strong></span></div></div></section>
       <div className="trust-strip"><div className="container trust-content"><span className="trust-title">A FOUNDATION IN<br/><strong>QUALITY & CONTINUOUS LEARNING</strong></span>{[

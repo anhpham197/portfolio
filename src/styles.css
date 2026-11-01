@@ -59,12 +59,12 @@
 .welcome-hola{position:absolute;left:0;bottom:0;width:100%;z-index:0;opacity:0;transform:translateY(18px) scale(.94);transform-origin:50% 90%}
 .welcome-hola img{display:block;width:100%;height:auto;clip-path:inset(0 100% 0 0)}
 .welcome-portal{position:relative;z-index:1;width:65%;margin:0 auto}
-.welcome-portal-viewport{position:relative;z-index:1;clip-path:inset(-50% -30% 4% -30%)}
-.welcome-emergence-window{opacity:0;transform-origin:50% 92%}
+.welcome-portal-viewport{position:relative;z-index:1;clip-path:polygon(-30% -50%,130% -50%,130% 83%,64% 83%,64% 100%,36% 100%,36% 83%,-30% 83%)}
+.welcome-emergence-window{opacity:0;transform-origin:50% 100%}
 .welcome-hole{position:absolute;left:30%;bottom:-8%;width:40%;height:auto;overflow:visible;pointer-events:none;opacity:0;transform-origin:50% 50%}
 .welcome-hole-back{z-index:0}
 .welcome-hole-front{z-index:2}
-.welcome-panther{position:relative;z-index:1;aspect-ratio:1618/972;overflow:visible}
+.welcome-panther{position:relative;z-index:1;aspect-ratio:1618/972;overflow:visible;transform-origin:50% 100%}
 .welcome-panther img{display:block;width:100%;height:100%;object-fit:contain}
 .welcome-panther-body{clip-path:polygon(29% 0,77% 0,77% 25%,83% 33%,100% 33%,100% 100%,0 100%,0 33%,23% 33%,29% 25%)}
 .welcome-panther-hand{position:absolute;inset:0}
@@ -76,34 +76,45 @@
 .sparkle-two{right:17%;top:14%;width:17px;height:17px;--sparkle-turn:-24deg}
 .sparkle-three{right:13%;bottom:10%;--sparkle-turn:32deg;fill:#e6a6bd}
 .welcome-speech{position:relative;min-width:0;padding:33px 35px;border:1px solid #eedfe5;border-radius:24px;background:#ffffffed;box-shadow:0 15px 55px #80344c09;visibility:hidden;opacity:0;pointer-events:none;transform-origin:0 50%}
-.welcome-intro.is-speech-visible .welcome-speech{visibility:visible;pointer-events:auto;animation:welcome-speak var(--welcome-speech-duration) ease both}
+.welcome-intro.is-speech-visible .welcome-speech{visibility:visible;opacity:1;pointer-events:auto;animation:welcome-speak var(--welcome-speech-duration) ease both}
 .welcome-speech:before{content:'';position:absolute;top:45%;left:-10px;width:18px;height:18px;background:#fff;border-left:1px solid #eedfe5;border-bottom:1px solid #eedfe5;transform:rotate(45deg)}
 .welcome-speech h2{font-size:clamp(30px,3.6vw,43px);line-height:1.25;letter-spacing:-1.2px;color:var(--accent)}
 .welcome-speech p{margin-top:13px;font-size:clamp(19px,2.2vw,25px);line-height:1.5;font-weight:400;color:#795666}
-.welcome-intro .welcome-enter{height:43px;margin-top:26px;padding:0 18px;font-size:12px;gap:17px}
+.welcome-type-line{display:grid;position:relative}
+.welcome-type-reserve,.welcome-type-visible{grid-area:1/1;min-width:0}
+.welcome-type-reserve{visibility:hidden}
+.welcome-type-caret{display:inline-block;width:0;height:1em;margin-left:2px;border-right:2px solid currentColor;vertical-align:-.12em;animation:welcome-caret .75s step-end infinite}
+.welcome-intro .welcome-enter{height:43px;margin-top:26px;padding:0 18px;font-size:12px;gap:17px;visibility:hidden;opacity:0;pointer-events:none}
+.welcome-intro.is-text-complete .welcome-enter{visibility:visible;opacity:1;pointer-events:auto;animation:welcome-button-appear .25s ease both}
 .welcome-intro.is-ready .welcome-hole{animation:welcome-hole-open .65s ease both}
 .welcome-intro.is-ready .welcome-emergence-window{animation:welcome-emerge 1.4s cubic-bezier(.22,.7,.3,1) .25s both}
-.welcome-intro.is-ready .welcome-panther{animation:welcome-bob 1.5s ease-in-out 1.65s 2}
+.welcome-intro.is-ready .welcome-panther{animation:welcome-bob 1.5s ease-in-out 1.65s infinite}
 .welcome-intro.is-ready .welcome-hola{animation:welcome-hola-pop .95s ease 1.1s both}
-.welcome-intro.is-ready .welcome-hola img{animation:welcome-hola-reveal .8s steps(1,end) 1.1s both,welcome-hola-glow 2.6s ease-in-out 2s 1}
-.welcome-intro.is-ready .hand-left{animation:welcome-wave-left 1.1s ease-in-out 1.25s 3}
-.welcome-intro.is-ready .hand-right{animation:welcome-wave-right 1.1s ease-in-out 1.35s 3}
-.welcome-intro.is-ready .welcome-sparkle{animation:welcome-sparkle 1.4s ease-in-out 1.4s 2}
+.welcome-intro.is-ready .welcome-hola img{animation:welcome-hola-reveal .8s steps(1,end) 1.1s both,welcome-hola-glow 2.6s ease-in-out 2s infinite,welcome-hola-float 2.8s ease-in-out 2.05s infinite}
+.welcome-intro.is-ready .hand-left{animation:welcome-wave-left 1.1s ease-in-out 1.25s infinite}
+.welcome-intro.is-ready .hand-right{animation:welcome-wave-right 1.1s ease-in-out 1.35s infinite}
+.welcome-intro.is-ready .welcome-sparkle{animation:welcome-sparkle 1.4s ease-in-out 1.4s infinite}
 .welcome-intro.is-ready .sparkle-two{animation-delay:1.7s}
 .welcome-intro.is-ready .sparkle-three{animation-delay:2s}
 .welcome-intro.is-closing{pointer-events:none;animation:welcome-exit .38s ease both}
-.welcome-intro.is-away *{animation-play-state:paused!important}
+.welcome-intro.is-away *,.welcome-intro.is-closing .welcome-art *{animation-play-state:paused!important}
+.welcome-intro.is-speech-visible .welcome-hole,.welcome-intro.is-speech-visible .welcome-emergence-window,.welcome-intro.is-speech-visible .welcome-hola{opacity:1;transform:none;animation:none!important}
+.welcome-intro.is-speech-visible .welcome-hola img{clip-path:none;animation:welcome-hola-glow 2.6s ease-in-out infinite,welcome-hola-float 2.8s ease-in-out infinite}
 .welcome-intro.is-image-failed .welcome-stage{grid-template-columns:minmax(0,440px)}
 .welcome-intro.is-image-failed .welcome-speech:before{display:none}
 @keyframes welcome-hole-open{0%{opacity:0;transform:scale(.55)}65%{opacity:1;transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
-@keyframes welcome-emerge{0%{opacity:0;transform:translateY(75%) scale(.35)}15%{opacity:1;transform:translateY(48%) scale(.55)}55%{opacity:1;transform:translateY(-5%) scale(1.03)}78%{opacity:1;transform:translateY(1.5%) scale(.99)}100%{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes welcome-bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(1.5deg)}}
+/* Bounce from the waist so the cropped lower edge stays behind the paper rim. */
+@keyframes welcome-emerge{0%{opacity:0;transform:translateY(75%) scale(.35)}15%{opacity:1;transform:translateY(48%) scale(.55)}55%{opacity:1;transform:translateY(0) scaleX(1.025) scaleY(1.035)}78%{opacity:1;transform:translateY(1%) scaleX(.995) scaleY(.99)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes welcome-bob{0%,100%{transform:scaleX(1) scaleY(1)}50%{transform:scaleX(.992) scaleY(1.025)}}
 @keyframes welcome-hola-pop{0%{opacity:0;transform:translateY(18px) scale(.94)}25%{opacity:1}65%{opacity:1;transform:translateY(-6px) scale(1.025)}85%{opacity:1;transform:translateY(3px) scale(.99)}100%{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes welcome-hola-reveal{0%{clip-path:inset(0 100% 0 0)}15%{clip-path:inset(0 72% 0 0)}38%{clip-path:inset(0 62% 0 0)}62%{clip-path:inset(0 20% 0 0)}86%,100%{clip-path:inset(0 0 0 0)}}
 @keyframes welcome-hola-glow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.12)}}
+@keyframes welcome-hola-float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-3px) scale(1.008)}}
 @keyframes welcome-wave-left{0%,100%{transform:rotate(0)}20%{transform:rotate(-9deg)}40%{transform:rotate(7deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(3deg)}}
 @keyframes welcome-wave-right{0%,100%{transform:rotate(0)}20%{transform:rotate(8deg)}40%{transform:rotate(-7deg)}60%{transform:rotate(9deg)}80%{transform:rotate(-3deg)}}
-@keyframes welcome-speak{0%{opacity:0;transform:translateX(18px) scale(.94) rotate(2deg)}65%{opacity:1;transform:translateX(-3px) scale(1.025) rotate(-.6deg)}100%{opacity:1;transform:translateX(0) scale(1) rotate(0)}}
+@keyframes welcome-speak{0%{opacity:0;transform:translateX(18px) scale(.94) rotate(2deg)}20%{opacity:1}65%{opacity:1;transform:translateX(-3px) scale(1.025) rotate(-.6deg)}100%{opacity:1;transform:translateX(0) scale(1) rotate(0)}}
+@keyframes welcome-caret{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes welcome-button-appear{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 @keyframes welcome-sparkle{0%,100%{opacity:0;transform:translateY(8px) rotate(0) scale(.35)}30%,60%{opacity:.8;transform:translateY(-9px) rotate(var(--sparkle-turn)) scale(1)}85%{opacity:0;transform:translateY(-18px) rotate(var(--sparkle-turn)) scale(.6)}}
 @keyframes welcome-exit{from{opacity:1}to{opacity:0}}
 @media(max-width:700px){.welcome-stage{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;align-content:center;max-width:520px;gap:25px;justify-items:center;padding:40px 28px 32px}.welcome-art{width:min(90vw,480px);transform:translateY(110px)}.welcome-speech{width:100%;padding:24px 25px;text-align:center;border-radius:21px;transform-origin:50% 0}.welcome-speech:before{top:-10px;left:calc(50% - 9px);border:0;border-left:1px solid #eedfe5;border-top:1px solid #eedfe5}.welcome-speech h2{font-size:31px;letter-spacing:-.9px}.welcome-speech p{font-size:20px;margin-top:11px}.welcome-intro .welcome-enter{margin-top:22px}.welcome-intro.is-image-failed .welcome-stage{grid-template-columns:minmax(0,1fr)}}
@@ -114,11 +125,9 @@
 .welcome-intro.is-reduced .welcome-emergence-window{opacity:1;transform:none;clip-path:none;animation:none!important}
 .welcome-intro.is-reduced .welcome-hole{opacity:1;transform:none;animation:none!important}
 .welcome-intro.is-reduced.is-speech-visible .welcome-speech{opacity:1;transform:none;animation:none!important}
+.welcome-intro.is-reduced.is-text-complete .welcome-enter{opacity:1;animation:none!important}
 .welcome-intro.is-reduced.is-ready .welcome-hola{opacity:1;transform:none;animation:none!important}
 .welcome-intro.is-reduced .welcome-hola img{clip-path:none;filter:none;animation:none!important}
 .welcome-intro.is-reduced .welcome-sparkles{display:none}
 .welcome-intro.is-reduced.is-closing{opacity:0;animation:none!important}
-.welcome-intro.is-art-complete .welcome-hole,.welcome-intro.is-art-complete .welcome-emergence-window,.welcome-intro.is-art-complete .welcome-panther,.welcome-intro.is-art-complete .welcome-panther-hand,.welcome-intro.is-art-complete .welcome-hola{opacity:1;transform:none;animation:none!important}
-.welcome-intro.is-art-complete .welcome-hola img{clip-path:none;filter:none;animation:none!important}
-.welcome-intro.is-art-complete .welcome-sparkle{opacity:0;animation:none!important}
 @media print{.welcome-intro{display:none!important}}
